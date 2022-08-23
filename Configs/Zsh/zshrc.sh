@@ -23,8 +23,7 @@ PS1="%F{blue}%3~%f $vcs_info_msg_0_ $ "
 
 
 ### OPTIONS ###
-set completion-ignore-case On
-set show-all-if-ambiguous On
+setopt interactive_comments
 
 
 ### PATHS ###
