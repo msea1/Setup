@@ -1,0 +1,13 @@
+
+# Personal github
+Host msea1.github.com
+    HostName github.com
+    AddKeysToAgent yes
+    IdentityFile ~/.ssh/gmail_ssh
+
+# Crescendo github
+Host crescendo.github.com
+    HostName github.com
+    AddKeysToAgent yes
+    IdentityFile ~/.ssh/crescendo_ssh
+
