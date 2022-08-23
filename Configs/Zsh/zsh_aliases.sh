@@ -15,8 +15,8 @@ alias tempd='cd ~/Temp'
 # NEW COMMANDS
 alias gitpersonal='git config user.email carruthm@gmail.com'
 alias gitwork='git config user.email Matthew@crescendohealth.co'
-alias ld='ls -ABF --group-directories-first --color=auto'
-alias ll='ls -AhlF --group-directories-first --color=auto'
+alias ld='ls -ABF --color=auto'
+alias ll='ls -AhlF --color=auto'
 alias files='xdg-open . &>/dev/null &'
 alias root="sudo su -"
 alias sorry='sudo $(fc -ln -1)'
