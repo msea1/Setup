@@ -15,7 +15,7 @@ author_by_file() {
 
 del_br() {
   local d=$(git rev-parse --abbrev-ref HEAD)
-  g co master
+  g co main
   g branch -D $d
 }
 
@@ -64,7 +64,6 @@ new_venv() {
 release_diff() {
   # show changes in dir from $1 to $2
   echo Commits
-  # g log --reverse --oneline $1..$2 -- ./
   g log --reverse --pretty="format:%h %s (%an, %ar)" $1..$2 -- ./
   echo
   echo Files Changed
@@ -109,19 +108,39 @@ up(){
   cd $d
 }
 
-upd_master() {
-  pushd -n $(pwd)
+upd_main() {
   local d=$(git rev-parse --abbrev-ref HEAD)
-  g stash
-  g co master
-  g fetch --prune
-  g reset --hard
-  g rebase
-  g submodule update
-  g co $d
-  popd
+  git stash push -m 'changes on ${d}'
+  git checkout main
+  git fetch --prune
+  git reset --hard
+  git rebase
+  git submodule update
+  git checkout $d
 }
 
 work() {
   source $HOME/.virtualenvs/$1/bin/activate
+}
+
+refresh_ssh() {
+	# add keys
+	ssh-add --apple-use-keychain ~/.ssh/gmail_ssh
+	ssh-add --apple-use-keychain ~/.ssh/crescendo_ssh
+	cd ~/Code/Crescendo/Backend
+	gitwork
+	git config user.name "Matthew Carruth"
+	cd ../Frontend
+	gitwork
+	git config user.name "Matthew Carruth"
+	cd ../Infra
+	gitwork
+	git config user.name "Matthew Carruth"
+	cd ~/Code/Personal/Setup
+	gitpersonal
+	git config user.name "Matthew Carruth"
+	cd ../Misc-Code
+	gitpersonal
+	git config user.name "Matthew Carruth"
+	cd ~/Code
 }
