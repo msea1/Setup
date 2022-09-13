@@ -108,6 +108,13 @@ up(){
   cd $d
 }
 
+
+upd_brew() {
+  brew update
+  brew upgrade
+}
+
+
 upd_main() {
   local d=$(git rev-parse --abbrev-ref HEAD)
   git stash push -m 'changes on ${d}'
