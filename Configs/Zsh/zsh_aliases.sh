@@ -13,7 +13,7 @@ alias code='cd ~/Code'
 alias tempd='cd ~/Temp'
 
 # NEW COMMANDS
-alias covtest='poetry run pytest -cov --cov-report term-missing:skip-covered --durations=0 --durations-min=0.25'
+alias covtest='poetry run pytest --cov --cov-report term-missing:skip-covered --durations=0 --durations-min=0.25'
 alias gitpersonal='git config user.email carruthm@gmail.com'
 alias gitwork='git config user.email Matthew@crescendohealth.co'
 alias ld='ls -ABF --color=auto'
