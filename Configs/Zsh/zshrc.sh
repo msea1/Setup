@@ -21,7 +21,7 @@ autoload -Uz vcs_info
 precmd () { vcs_info }
 zstyle ':vcs_info:*' formats '[%F{green}%b%f]'
 setopt PROMPT_SUBST
-PROMPT='%F{blue}%3~%f ${vcs_info_msg_0_} $ '
+PROMPT='%F{091}%3~%f ${vcs_info_msg_0_} $ '
 
 
 # direnv
