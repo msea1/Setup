@@ -32,3 +32,4 @@ alias py='python3'
 # MACHINES
 
 # EDITING
+alias gst='g st'
