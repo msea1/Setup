@@ -19,9 +19,9 @@ export PROMPT_DIRTRIM=3
 # Include Git Branch
 autoload -Uz vcs_info
 precmd () { vcs_info }
-zstyle ':vcs_info:*' formats '[%F{green}%b%f]'
+zstyle ':vcs_info:*' formats '[%F{green}%b%f] '
 setopt PROMPT_SUBST
-PROMPT='%B%F{091}%3~%f%b ${vcs_info_msg_0_} $ '
+PROMPT='%B%F{091}%3~%f%b ${vcs_info_msg_0_}$ '
 
 
 # direnv
