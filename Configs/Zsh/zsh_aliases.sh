@@ -8,12 +8,14 @@ alias mkdir='mkdir -pv'
 alias wget='wget -c'
 
 # FOLDER SHORTCUTS
+alias backend="cd ~/Code/Crescendo/Backend"
 alias cd..="cd .."
 alias code='cd ~/Code'
+alias frontend="cd ~/Code/Crescendo/Frontend"
 alias tempd='cd ~/Temp'
 
 # NEW COMMANDS
-alias covtest='poetry run pytest --cov --cov-report term-missing:skip-covered --durations=0 --durations-min=0.25'
+alias covtest='poetry run pytest -v --cov --cov-report term-missing:skip-covered --durations=0 --durations-min=0.25'
 alias gitpersonal='git config user.email carruthm@gmail.com'
 alias gitwork='git config user.email Matthew@crescendohealth.co'
 alias ld='ls -ABF --color=auto'

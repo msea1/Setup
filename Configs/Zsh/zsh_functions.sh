@@ -115,6 +115,32 @@ upd_brew() {
 }
 
 
+upd_all() {
+	backend
+  local d=$(git rev-parse --abbrev-ref HEAD)
+  git stash push -m 'changes on ${d}'
+  git checkout main
+  git fetch --prune
+  git reset --hard
+  git rebase
+  git submodule update
+	./scripts/migrate/local
+  git checkout $d
+
+	frontend
+  local d=$(git rev-parse --abbrev-ref HEAD)
+  git stash push -m 'changes on ${d}'
+  git checkout main
+  git fetch --prune
+  git reset --hard
+  git rebase
+  git submodule update
+  git checkout $d
+	
+	code
+	cd Crescendo
+}
+
 upd_main() {
   local d=$(git rev-parse --abbrev-ref HEAD)
   git stash push -m 'changes on ${d}'
@@ -123,6 +149,10 @@ upd_main() {
   git reset --hard
   git rebase
   git submodule update
+	if [ ${PWD##*/} = "Backend" ];
+		then
+			./scripts/migrate/local
+	fi	
   git checkout $d
 }
 
