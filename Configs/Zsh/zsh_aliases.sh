@@ -20,6 +20,7 @@ alias gitpersonal='git config user.email carruthm@gmail.com'
 alias gitwork='git config user.email Matthew@crescendohealth.co'
 alias ld='ls -ABF --color=auto'
 alias ll='ls -AhlF --color=auto'
+alias refresh_shell='source ~/.zshrc'
 alias root="sudo su -"
 alias sorry='sudo $(fc -ln -1)'
 alias sudo_pw='cat ~/.sudo_pw | xsel -ib'

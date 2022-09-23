@@ -61,6 +61,28 @@ new_venv() {
   work $1
 }
 
+refresh_ssh() {
+	# add keys
+	ssh-add --apple-use-keychain ~/.ssh/gmail_ssh
+	ssh-add --apple-use-keychain ~/.ssh/crescendo_ssh
+	cd ~/Code/Crescendo/Backend
+	gitwork
+	git config user.name "Matthew Carruth"
+	cd ../Frontend
+	gitwork
+	git config user.name "Matthew Carruth"
+	cd ../Infra
+	gitwork
+	git config user.name "Matthew Carruth"
+	cd ~/Code/Personal/Setup
+	gitpersonal
+	git config user.name "Matthew Carruth"
+	cd ../Misc-Code
+	gitpersonal
+	git config user.name "Matthew Carruth"
+	cd ~/Code
+}
+
 release_diff() {
   # show changes in dir from $1 to $2
   echo Commits
@@ -109,12 +131,6 @@ up(){
 }
 
 
-upd_brew() {
-  brew update
-  brew upgrade
-}
-
-
 upd_all() {
 	backend
   local d=$(git rev-parse --abbrev-ref HEAD)
@@ -141,6 +157,21 @@ upd_all() {
 	cd Crescendo
 }
 
+
+upd_brew() {
+  brew update
+  brew upgrade
+}
+
+
+upd_configs() {
+	cp ~/.zshrc ~/Code/Personal/Setup/Configs/Zsh/zshrc.sh
+	cp ~/.sh_aliases ~/Code/Personal/Setup/Configs/Zsh/zsh_aliases.sh
+	cp ~/.sh_fxs ~/Code/Personal/Setup/Configs/Zsh/zsh_functions.sh
+	cd ~/Code/Personal/Setup/
+}
+
+
 upd_main() {
   local d=$(git rev-parse --abbrev-ref HEAD)
   git stash push -m 'changes on ${d}'
@@ -156,28 +187,8 @@ upd_main() {
   git checkout $d
 }
 
-work() {
-  source $HOME/.virtualenvs/$1/bin/activate
-}
 
-refresh_ssh() {
-	# add keys
-	ssh-add --apple-use-keychain ~/.ssh/gmail_ssh
-	ssh-add --apple-use-keychain ~/.ssh/crescendo_ssh
-	cd ~/Code/Crescendo/Backend
-	gitwork
-	git config user.name "Matthew Carruth"
-	cd ../Frontend
-	gitwork
-	git config user.name "Matthew Carruth"
-	cd ../Infra
-	gitwork
-	git config user.name "Matthew Carruth"
-	cd ~/Code/Personal/Setup
-	gitpersonal
-	git config user.name "Matthew Carruth"
-	cd ../Misc-Code
-	gitpersonal
-	git config user.name "Matthew Carruth"
-	cd ~/Code
+work() {
+	backend
+  source ./.venv/bin/activate
 }
