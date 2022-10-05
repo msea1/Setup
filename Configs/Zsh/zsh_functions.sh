@@ -56,9 +56,14 @@ extract () {
  fi
 }
 
-new_venv() {
-  py -m venv $HOME/.virtualenvs/$1
-  work $1
+pretty_json_files() {
+	# alternate, replaced by one-line in-place alias
+	# tempd
+	# pbpaste > ./pretty_json.json
+	# cat ./pretty_json.json | jq . | sponge ./pretty_json.json
+	# subl ./pretty_json.json
+	# rm ./pretty_json.json
+	# cd -
 }
 
 refresh_ssh() {
