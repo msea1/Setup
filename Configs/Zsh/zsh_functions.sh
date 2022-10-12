@@ -67,6 +67,7 @@ pretty_json_files() {
 }
 
 refresh_ssh() {
+	pushd
 	# add keys
 	ssh-add --apple-use-keychain ~/.ssh/gmail_ssh
 	ssh-add --apple-use-keychain ~/.ssh/crescendo_ssh
@@ -85,7 +86,7 @@ refresh_ssh() {
 	cd ../Misc-Code
 	gitpersonal
 	git config user.name "Matthew Carruth"
-	cd ~/Code
+	popd
 }
 
 release_diff() {
@@ -137,29 +138,15 @@ up(){
 
 
 upd_all() {
+	pushd
+	
 	backend
-  local d=$(git rev-parse --abbrev-ref HEAD)
-  git stash push -m 'changes on ${d}'
-  git checkout main
-  git fetch --prune
-  git reset --hard
-  git rebase
-  git submodule update
-	./scripts/migrate/local
-  git checkout $d
+  upd_main
 
 	frontend
-  local d=$(git rev-parse --abbrev-ref HEAD)
-  git stash push -m 'changes on ${d}'
-  git checkout main
-  git fetch --prune
-  git reset --hard
-  git rebase
-  git submodule update
-  git checkout $d
+  upd_main
 	
-	code
-	cd Crescendo
+	popd
 }
 
 
@@ -176,6 +163,12 @@ upd_configs() {
 	cd ~/Code/Personal/Setup/
 }
 
+upd_db() {
+	backend
+	./scripts/migrate/local
+	cd -
+}
+
 
 upd_main() {
   local d=$(git rev-parse --abbrev-ref HEAD)
@@ -185,10 +178,10 @@ upd_main() {
   git reset --hard
   git rebase
   git submodule update
-	if [ ${PWD##*/} = "Backend" ];
-		then
-			./scripts/migrate/local
-	fi	
+	# if [ ${PWD##*/} = "Backend" ];
+	# 	then
+	# 		./scripts/migrate/local
+	# fi
   git checkout $d
 }
 
