@@ -67,7 +67,7 @@ pretty_json_files() {
 }
 
 refresh_ssh() {
-	pushd
+	pushd -n $(pwd)
 	# add keys
 	ssh-add --apple-use-keychain ~/.ssh/gmail_ssh
 	ssh-add --apple-use-keychain ~/.ssh/crescendo_ssh
@@ -138,7 +138,7 @@ up(){
 
 
 upd_all() {
-	pushd
+	pushd -n $(pwd)
 	
 	backend
   upd_main
