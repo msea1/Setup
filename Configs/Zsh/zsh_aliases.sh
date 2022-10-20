@@ -15,9 +15,12 @@ alias frontend="cd ~/Code/Crescendo/Frontend"
 alias tempd='cd ~/Temp'
 
 # NEW COMMANDS
+alias autofix='./scripts/lint/autofix'
 alias covtest='poetry run pytest -v --cov --cov-report term-missing:skip-covered --durations=0 --durations-min=0.25'
 alias gitpersonal='git config user.email carruthm@gmail.com'
 alias gitwork='git config user.email Matthew@crescendohealth.co'
+alias ipy='ipython --profile-dir .ipython
+alias lint_check='./scripts/lint/check'
 alias ld='ls -ABF --color=auto'
 alias ll='ls -AhlF --color=auto'
 alias pretty_json='pbpaste | jq . | pbcopy'
