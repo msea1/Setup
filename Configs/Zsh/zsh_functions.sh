@@ -56,11 +56,6 @@ extract () {
  fi
 }
 
-format_code() {
-	backend
-	black --preview --line-length 145 -C .
-}
-
 pretty_json_files() {
 	# alternate, replaced by one-line in-place alias
 	# tempd
