@@ -13,6 +13,7 @@ alias code='cd ~/Code'
 alias tempd='cd ~/Misc'
 
 # NEW COMMANDS
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias docker_list='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"'
 alias docker_stop='docker rm -f -v $(docker ps -a -q)'
 alias ld='ls -ABF --group-directories-first --color=auto'
