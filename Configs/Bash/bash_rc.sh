@@ -22,8 +22,14 @@ if [[ -f ~/.git-completion.bash ]]; then
 fi
 complete -o default -o nospace -F _git g
 
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 
 
 ### COLORS ###
@@ -38,31 +44,25 @@ PURPLE="\e[38;5;93m\]"
 
 ### ENVIRONMENT VARIABLES ###
 export EDITOR=vim
+export HISTCONTROL=ignoreboth  # don't put duplicate lines or lines starting with space in the history.
+export HISTIGNORE="&:ls:[bf]g:exit"
 export HISTFILESIZE=20000
 export HISTSIZE=10000
-export HISTCONTROL=ignoredups
-export HISTIGNORE="&:ls:[bf]g:exit"
 export HISTTIMEFORMAT="%a %d %b %T: "
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 export PROMPT_DIRTRIM=3
 
-# PS1="\[$BLUE[${PWD#"${PWD%/*/*}/"}] \[$(tput sgr0)\]\[$GREEN\$(parse_git_branch) \[$(tput sgr0)\]\[$WHITE\\$ \[$(tput sgr0)\]"
-# PS1="\[$BLUE[\w] \[$(tput sgr0)\]\[$GREEN\$(parse_git_branch) \[$(tput sgr0)\]\[$WHITE\\$ \[$(tput sgr0)\]"
-if [ $(hostname) == "x1" ];
-then # laptop
-  PS1="\[$RED\$(parse_vpn)\[$PURPLE[\w] \[$YELLOW\$(parse_git_branch) \[$WHITE\\$ \[$(tput sgr0)\]"
-else # desktop
-  PS1="\[$RED\$(parse_vpn)\[$BLUE[\w] \[$GREEN\$(parse_git_branch) \[$WHITE\\$ \[$(tput sgr0)\]"
-fi
+### PROMPT
+PS1="\[$RED\$(parse_vpn)\[$PURPLE[\w] \[$YELLOW\$(parse_git_branch) \[$WHITE\\$ \[$(tput sgr0)\]"
 
 
 ### OPTIONS ###
 shopt -s cdspell  # Autocorrect fudged paths in cd calls
-shopt -s checkwinsize
+shopt -s checkwinsize  # check the window size after each command and, if necessary, update the values of LINES and COLUMNS.
 shopt -s cmdhist
 shopt -s dotglob
 shopt -s extglob
-shopt -s histappend
+shopt -s histappend  # append to the history file, don't overwrite it
 
 set completion-ignore-case On
 set show-all-if-ambiguous On
@@ -71,8 +71,6 @@ set show-all-if-ambiguous On
 ### PATHS ###
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
-# export PYTHONPATH=""  # add main repo path here
-export PSQL_DATA=/home/mcarruth/Code/psql_data
 
 
 ### ALIASES ###
