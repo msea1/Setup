@@ -20,7 +20,9 @@ fi
 if [[ -f ~/.git-completion.bash ]]; then
     source ~/.git-completion.bash
 fi
-complete -o default -o nospace -F _git g
+complete -o bashdefault -o default -o nospace -F _git g
+_completion_loader git
+eval $(complete -p git | perl -pe 's/(\s)git$/$1g/')
 
 
 # make less more friendly for non-text input files, see lesspipe(1)
