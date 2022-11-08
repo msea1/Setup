@@ -11,6 +11,7 @@ sudo apt install gnome-tweaks vim
 mkdir ~/bin
 mkdir ~/Code
 mkdir ~/Temp
+sudo echo 'set completion-ignore-case On' >> /etc/inputrc
 ```
 
 ## Update Files
@@ -40,4 +41,5 @@ xdg-user-dirs-update
 ## In `Files`
 - Delete `Videos`
 - Create blank_text.txt in ~/Templates
+
 
