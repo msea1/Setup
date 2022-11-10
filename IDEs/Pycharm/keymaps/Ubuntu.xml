@@ -1,0 +1,26 @@
+<keymap version="1" name="Ubuntu" parent="Default for GNOME">
+  <action id="Annotate">
+    <keyboard-shortcut first-keystroke="alt b" />
+  </action>
+  <action id="CloseContent">
+    <keyboard-shortcut first-keystroke="ctrl w" />
+  </action>
+  <action id="EditorSelectWord" />
+  <action id="MoveEditorToOppositeTabGroup">
+    <keyboard-shortcut first-keystroke="alt t" />
+  </action>
+  <action id="MoveTabRight">
+    <keyboard-shortcut first-keystroke="alt r" />
+  </action>
+  <action id="SmartSelect" />
+  <action id="Tool_External Tools_Black (1-pane)">
+    <keyboard-shortcut first-keystroke="alt l" second-keystroke="l" />
+  </action>
+  <action id="Tool_External Tools_Black (2-pane L)">
+    <keyboard-shortcut first-keystroke="alt l" second-keystroke="m" />
+  </action>
+  <action id="Tool_External Tools_Black (2-pane S)">
+    <keyboard-shortcut first-keystroke="alt l" second-keystroke="s" />
+  </action>
+  <action id="UsageFiltering.WriteAccess" />
+</keymap>

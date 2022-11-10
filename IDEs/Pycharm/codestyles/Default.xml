@@ -1,0 +1,14 @@
+<code_scheme name="Default" version="173">
+  <option name="RIGHT_MARGIN" value="140" />
+  <option name="ALIGN_MULTILINE_PARAMETERS_IN_CALLS" value="true" />
+  <option name="SOFT_MARGINS" value="80,110,140" />
+  <Python>
+    <option name="ALIGN_MULTILINE_IMPORTS" value="false" />
+    <option name="OPTIMIZE_IMPORTS_SORT_NAMES_IN_FROM_IMPORTS" value="true" />
+    <option name="OPTIMIZE_IMPORTS_JOIN_FROM_IMPORTS_WITH_SAME_SOURCE" value="true" />
+    <option name="FROM_IMPORT_PARENTHESES_FORCE_IF_MULTILINE" value="true" />
+  </Python>
+  <editorconfig>
+    <option name="ENABLED" value="false" />
+  </editorconfig>
+</code_scheme>

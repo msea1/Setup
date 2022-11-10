@@ -1,0 +1,6 @@
+BashSupport
+PerforceDirectPlugin
+Subversion
+com.intellij.gradle
+com.intellij.lang.puppet
+hg4idea

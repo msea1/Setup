@@ -1,0 +1,5 @@
+-Xmx10240m
+-Djava.net.preferIPv4Stack=true
+-Djdk.attach.allowAttachSelf
+-Dawt.useSystemAAFontSettings=lcd
+-Dsun.java2d.renderer=sun.java2d.marlin.MarlinRenderingEngine

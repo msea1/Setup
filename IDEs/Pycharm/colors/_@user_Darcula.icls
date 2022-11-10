@@ -1,0 +1,12 @@
+<scheme name="_@user_Darcula" version="142" parent_scheme="Darcula">
+  <metaInfo>
+    <property name="created">2019-06-11T14:23:56</property>
+    <property name="ide">Python</property>
+    <property name="ideVersion">2019.1.3.0.0</property>
+    <property name="modified">2019-07-08T14:56:18</property>
+    <property name="originalScheme">Darcula</property>
+  </metaInfo>
+  <colors>
+    <option name="SOFT_WRAP_SIGN_COLOR" value="25b0a9" />
+  </colors>
+</scheme>
