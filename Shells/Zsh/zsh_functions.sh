@@ -186,6 +186,11 @@ upd_main() {
 }
 
 
+using_port() {
+	sudo lsof -i :$1
+}
+
+
 work() {
 	backend
   source ./.venv/bin/activate
