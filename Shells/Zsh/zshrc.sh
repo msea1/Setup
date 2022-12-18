@@ -13,6 +13,7 @@ export HISTCONTROL=ignoredups
 export HISTIGNORE="&:ls:[bf]g:exit"
 export HISTTIMEFORMAT="%a %d %b %T: "
 export PATH="/Users/matthew/bin:$PATH"
+export PATH="/Users/matthew/node_modules/.bin/:$PATH"
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 export PROMPT_DIRTRIM=3
 

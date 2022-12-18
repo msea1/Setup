@@ -80,6 +80,9 @@ refresh_ssh() {
 	cd ../Infra
 	gitwork
 	git config user.name "Matthew Carruth"
+	cd ../Postman
+	gitwork
+	git config user.name "Matthew Carruth"
 	cd ~/Code/Personal/Setup
 	gitpersonal
 	git config user.name "Matthew Carruth"
@@ -108,6 +111,10 @@ reset_origin() {
 
 search() {
   ag -Q -i "$1" -G "$2"$
+}
+
+search_all() {
+	ag -i "$1" .* .
 }
 
 search_code() {
@@ -157,9 +164,9 @@ upd_brew() {
 
 
 upd_configs() {
-	cp ~/.zshrc ~/Code/Personal/Setup/Configs/Zsh/zshrc.sh
-	cp ~/.sh_aliases ~/Code/Personal/Setup/Configs/Zsh/zsh_aliases.sh
-	cp ~/.sh_fxs ~/Code/Personal/Setup/Configs/Zsh/zsh_functions.sh
+	cp ~/.zshrc ~/Code/Personal/Setup/Shells/Zsh/zshrc.sh
+	cp ~/.sh_aliases ~/Code/Personal/Setup/Shells/Zsh/zsh_aliases.sh
+	cp ~/.sh_fxs ~/Code/Personal/Setup/Shells/Zsh/zsh_functions.sh
 	cd ~/Code/Personal/Setup/
 }
 
