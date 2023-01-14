@@ -66,36 +66,10 @@ pretty_json_files() {
 	# cd -
 }
 
-refresh_ssh() {
-	pushd -n $(pwd)
-	# add keys
-	ssh-add --apple-use-keychain ~/.ssh/gmail_ssh
-	ssh-add --apple-use-keychain ~/.ssh/crescendo_ssh
-	cd ~/Code/Crescendo/Backend
-	gitwork
-	git config user.name "Matthew Carruth"
-	cd ../Frontend
-	gitwork
-	git config user.name "Matthew Carruth"
-	cd ../Infra
-	gitwork
-	git config user.name "Matthew Carruth"
-	cd ../Postman
-	gitwork
-	git config user.name "Matthew Carruth"
-	cd ~/Code/Personal/Setup
-	gitpersonal
-	git config user.name "Matthew Carruth"
-	cd ../Misc-Code
-	gitpersonal
-	git config user.name "Matthew Carruth"
-	popd
-}
-
 release_diff() {
   # show changes in dir from $1 to $2
   echo Commits
-  g log --reverse --pretty="format:%h %s (%an, %ar)" $1..$2 -- ./
+  g log --reverse --pretty="format:%h %s (%an)" $1..$2 -- ./
   echo
   echo Files Changed
   g diff --name-only $1 $2 ./
@@ -127,6 +101,18 @@ search_files() {
     d="$d | xargs ag -l -Q -i \"$var\""
   done
   eval "$d"
+}
+
+ssh_personal() {
+	gitpersonal
+	ssh-add -d ~/.ssh/crescendo_ssh
+	ssh-add --apple-use-keychain ~/.ssh/gmail_ssh
+}
+
+ssh_work() {	
+	gitwork
+	ssh-add -d ~/.ssh/gmail_ssh
+	ssh-add --apple-use-keychain ~/.ssh/crescendo_ssh
 }
 
 up(){
