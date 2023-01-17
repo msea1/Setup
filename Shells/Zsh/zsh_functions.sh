@@ -104,13 +104,15 @@ search_files() {
 }
 
 ssh_personal() {
-	gitpersonal
+	git config user.name "Matthew Carruth"
+	git config user.email "carruthm@gmail.com"
 	ssh-add -d ~/.ssh/crescendo_ssh
 	ssh-add --apple-use-keychain ~/.ssh/gmail_ssh
 }
 
 ssh_work() {	
-	gitwork
+	git config user.name "Matthew Carruth"
+	git config user.email "matthew@crescendohealth.co"
 	ssh-add -d ~/.ssh/gmail_ssh
 	ssh-add --apple-use-keychain ~/.ssh/crescendo_ssh
 }
