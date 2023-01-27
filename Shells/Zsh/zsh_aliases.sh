@@ -30,6 +30,7 @@ alias sudo_pw='cat ~/.sudo_pw | xsel -ib'
 # SHORTCUTS
 alias g='git'
 alias gps='pgrep -a'
+alias gst='g st'
 alias h='history | grep'
 alias pip='pip3'
 alias py='python3'
@@ -37,4 +38,3 @@ alias py='python3'
 # MACHINES
 
 # EDITING
-alias gst='g st'

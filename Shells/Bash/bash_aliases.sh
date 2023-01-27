@@ -20,7 +20,6 @@ alias ld='ls -ABF --group-directories-first --color=auto'
 alias ll='ls -AhlF --group-directories-first --color=auto'
 alias files='xdg-open . &>/dev/null &'
 alias root="sudo su -"
-alias run_psql="docker run -d --net=host --name pg -p 5432:5432 -v $PSQL_DATA:/var/lib/postgresql/data -e POSTGRES_HOST_AUTH_METHOD=trust postgres:11.8"
 alias sorry='sudo $(fc -ln -1)'
 alias sudo_pw='cat ~/.sudo_pw | xsel -ib'
 alias update='sudo_pw && sudo apt update && sudo apt -y upgrade && sudo apt dist-upgrade && sudo apt autoremove'

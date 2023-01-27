@@ -56,7 +56,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 export PROMPT_DIRTRIM=3
 
 ### PROMPT
-PS1="\[$RED\$(parse_vpn)\[$PURPLE[\w] \[$YELLOW\$(parse_git_branch) \[$WHITE\\$ \[$(tput sgr0)\]"
+PS1="\[$PURPLE[\w] \[$YELLOW\$(parse_git_branch) \[$WHITE\\$ \[$(tput sgr0)\]"
 
 
 ### OPTIONS ###
