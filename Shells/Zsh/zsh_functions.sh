@@ -78,6 +78,17 @@ pretty_json_files() {
 }
 
 release_diff() {
+	git fetch
+	prod=$(git show -s --pretty='format:%h' origin/production)
+	main=$(git show -s --pretty='format:%h' origin/main)
+	echo "Changes between Production (\`$prod\`) and Main (\`$main\`)"
+	echo "\`\`\`"
+	git --no-pager log --reverse --pretty="format:%h %<(10)%aN: %s" "$prod".."$main"
+	echo ""
+	echo "\`\`\`"
+}
+
+release_diff_full() {
   # show changes in dir from $1 to $2
   echo Commits
   g log --reverse --pretty="format:%h %s (%an)" $1..$2 -- ./
@@ -167,12 +178,6 @@ upd_configs() {
 	cp ~/.sh_aliases ~/Code/Personal/Setup/Shells/Zsh/zsh_aliases.sh
 	cp ~/.sh_fxs ~/Code/Personal/Setup/Shells/Zsh/zsh_functions.sh
 	cd ~/Code/Personal/Setup/
-}
-
-upd_db() {
-	backend
-	./scripts/migrate/local
-	cd -
 }
 
 
