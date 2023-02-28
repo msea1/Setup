@@ -56,6 +56,17 @@ extract () {
  fi
 }
 
+new_br() {
+	git checkout -b matthew/$1
+	if [[ $(git status --short) ]]; then
+		git aa
+		git cm 'WIP: carryover'
+	fi
+	black -q -C --preview -l 140 .
+	git aa
+	git cm 'Black (revert!)'
+}
+
 pretty_json_files() {
 	# alternate, replaced by one-line in-place alias
 	# tempd
