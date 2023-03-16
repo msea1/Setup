@@ -78,10 +78,13 @@ pretty_json_files() {
 }
 
 release_diff() {
-	git fetch
+    repo=${PWD##*/}
+    repo=${result:-/}
+	git fetch -p
 	prod=$(git show -s --pretty='format:%h' origin/production)
 	main=$(git show -s --pretty='format:%h' origin/main)
-	echo "Changes between Production (\`$prod\`) and Main (\`$main\`)"
+	echo "$repo - changes between Production (\`$prod\`) and Main (\`$main\`)"
+    echo "https://github.com/CrescendoHealth/crescendo-${repo:l}/compare/$prod...$main"
 	echo "\`\`\`"
 	git --no-pager log --reverse --pretty="format:%h %<(10)%aN: %s" "$prod".."$main"
 	echo ""
