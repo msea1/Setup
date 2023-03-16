@@ -62,7 +62,7 @@ new_br() {
 		git aa
 		git cm 'WIP: carryover'
 	fi
-	black -q -C --preview -l 140 .
+	black -q -C --preview -l 125 .
 	git aa
 	git cm 'Black (revert!)'
 }
