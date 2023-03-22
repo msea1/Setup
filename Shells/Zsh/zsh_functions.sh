@@ -64,7 +64,7 @@ new_br() {
 	fi
 	black -q -C --preview -l 125 .
 	git aa
-	git cm 'Black (revert!)'
+	git cm 'black_commit_to_revert'
 }
 
 pretty_json_files() {
@@ -75,6 +75,22 @@ pretty_json_files() {
 	# subl ./pretty_json.json
 	# rm ./pretty_json.json
 	# cd -
+}
+
+rebase_main() {
+	local d=$(git rev-parse --abbrev-ref HEAD)
+    cut_black
+	upd_main
+	g co main
+	new_br main_125
+    git checkout $d
+	g rebase -i matthew/main_125
+	g branch -D matthew/main_125
+}
+
+cut_black() {
+    drop=$(g log --oneline HEAD~50..HEAD | grep black_commit_to_revert | cut -d " " -f 1)
+    g rebase --onto $drop^ $drop
 }
 
 release_diff() {
