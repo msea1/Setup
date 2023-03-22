@@ -59,3 +59,5 @@ fi
 if [ -f ~/.sh_fxs ]; then
 . ~/.sh_fxs
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
