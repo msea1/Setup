@@ -79,18 +79,20 @@ pretty_json_files() {
 
 rebase_main() {
 	local d=$(git rev-parse --abbrev-ref HEAD)
-    cut_black
+    # create new black from latest main
 	upd_main
-	g co main
+	git co main
 	new_br main_125
+    
+    # ID previous black commit
     git checkout $d
-	g rebase -i matthew/main_125
-	g branch -D matthew/main_125
-}
-
-cut_black() {
     drop=$(g log --oneline HEAD~50..HEAD | grep black_commit_to_revert | cut -d " " -f 1)
-    g rebase --onto $drop^ $drop
+    
+    # rebase on new black
+    git rebase -i --onto matthew/main_125 $drop
+    
+    # remove temp branch
+	git branch -D matthew/main_125
 }
 
 release_diff() {
