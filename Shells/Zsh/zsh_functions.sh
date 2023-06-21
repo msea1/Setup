@@ -104,7 +104,7 @@ release_diff() {
 	echo "$repo - changes between Production (\`$prod\`) and Main (\`$main\`)"
     echo "https://github.com/CrescendoHealth/crescendo-${repo:l}/compare/$prod...$main"
 	echo "\`\`\`"
-	git --no-pager log --reverse --pretty="format:%h %<(10)%aN: %s" "$prod".."$main"
+	git --no-pager log --reverse --pretty="format:%h %<(10)%aN: %<(100,mtrunc)%s" "$prod".."$main"
 	echo ""
 	echo "\`\`\`"
 }
