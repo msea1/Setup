@@ -57,14 +57,7 @@ extract () {
 }
 
 new_br() {
-	git checkout -b matthew/$1
-	if [[ $(git status --short) ]]; then
-		git aa
-		git cm 'WIP: carryover'
-	fi
-	black -q -C --preview -l 125 .
-	git aa
-	git cm 'black_commit_to_revert'
+  git checkout -b matthew/$1
 }
 
 pretty_json_files() {
@@ -77,39 +70,7 @@ pretty_json_files() {
 	# cd -
 }
 
-rebase_main() {
-	local d=$(git rev-parse --abbrev-ref HEAD)
-    # create new black from latest main
-	upd_main
-	git co main
-	new_br main_125
-    
-    # ID previous black commit
-    git checkout $d
-    drop=$(g log --oneline HEAD~50..HEAD | grep black_commit_to_revert | cut -d " " -f 1)
-    
-    # rebase on new black
-    git rebase -i --onto matthew/main_125 $drop
-    
-    # remove temp branch
-	git branch -D matthew/main_125
-}
-
 release_diff() {
-    repo=${PWD##*/}
-    repo=${result:-/}
-	git fetch -p
-	prod=$(git show -s --pretty='format:%h' origin/production)
-	main=$(git show -s --pretty='format:%h' origin/main)
-	echo "$repo - changes between Production (\`$prod\`) and Main (\`$main\`)"
-    echo "https://github.com/CrescendoHealth/crescendo-${repo:l}/compare/$prod...$main"
-	echo "\`\`\`"
-	git --no-pager log --reverse --pretty="format:%h %<(10)%aN: %<(100,mtrunc)%s" "$prod".."$main"
-	echo ""
-	echo "\`\`\`"
-}
-
-release_diff_full() {
   # show changes in dir from $1 to $2
   echo Commits
   g log --reverse --pretty="format:%h %s (%an)" $1..$2 -- ./
@@ -174,33 +135,18 @@ up(){
   cd $d
 }
 
-
-upd_all() {
-	pushd -n $(pwd)
-	
-	backend
-  upd_main
-
-	frontend
-  upd_main
-	
-	popd
-}
-
-
 upd_brew() {
   brew update
   brew upgrade
 }
 
-
 upd_configs() {
-	cp ~/.zshrc ~/Code/Personal/Setup/Shells/Zsh/zshrc.sh
-	cp ~/.sh_aliases ~/Code/Personal/Setup/Shells/Zsh/zsh_aliases.sh
-	cp ~/.sh_fxs ~/Code/Personal/Setup/Shells/Zsh/zsh_functions.sh
-	cd ~/Code/Personal/Setup/
+  cp ~/.zshrc ~/Code/Personal/Setup/Shells/Zsh/zshrc.sh
+  cp ~/.sh_aliases ~/Code/Personal/Setup/Shells/Zsh/zsh_aliases.sh
+  cp ~/.sh_fxs ~/Code/Personal/Setup/Shells/Zsh/zsh_functions.sh
+  cd ~/Code/Personal/Setup/
+  ssh_personal
 }
-
 
 upd_main() {
   local d=$(git rev-parse --abbrev-ref HEAD)
@@ -210,20 +156,24 @@ upd_main() {
   git reset --hard
   git rebase
   git submodule update
-	# if [ ${PWD##*/} = "Backend" ];
-	# 	then
-	# 		./scripts/migrate/local
-	# fi
+  if [ ${PWD##*/} = "Backend" ];
+    then
+      work
+      poetry install
+	# ./scripts/migrate/local
+  fi
+  if [ ${PWD##*/} = "Frontend" ];
+    then
+      npm install
+  fi
   git checkout $d
 }
-
 
 using_port() {
 	sudo lsof -i :$1
 }
 
-
 work() {
-	backend
+  backend
   source ./.venv/bin/activate
 }
