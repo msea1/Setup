@@ -42,6 +42,9 @@ eval "$(pyenv init -)"
 # Allow # in terminal
 setopt interactive_comments
 
+# Autofix
+setopt nocaseglob  # ignore case
+setopt correct  # correct spelling mistakes
 
 # Case Insensitive Matching
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'

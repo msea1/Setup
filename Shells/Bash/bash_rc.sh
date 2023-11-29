@@ -66,6 +66,7 @@ shopt -s cmdhist
 shopt -s dotglob
 shopt -s extglob
 shopt -s histappend  # append to the history file, don't overwrite it
+shopt -s nocaseglob  # ignore case when matching
 
 set completion-ignore-case On
 set show-all-if-ambiguous On
