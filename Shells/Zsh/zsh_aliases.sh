@@ -24,8 +24,11 @@ alias ll='ls -AhlF --color=auto'
 alias pretty_json='pbpaste | jq --indent 4 -S . | pbcopy'
 alias refresh_shell='source ~/.zshrc'
 alias root="sudo su -"
+alias run_prod='AWS_PROFILE=production-rw ./scripts/ecs/exec'
+alias run_stage='AWS_PROFILE=staging-rw ./scripts/ecs/exec'
 alias sorry='sudo $(fc -ln -1)'
 alias sudo_pw='cat ~/.sudo_pw | xsel -ib'
+alias unwrap="git diff --name-only --diff-filter=ACMRU HEAD -- '*.py' | xargs ruff format"
 
 # SHORTCUTS
 alias g='git'
