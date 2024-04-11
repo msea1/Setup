@@ -56,6 +56,10 @@ extract () {
  fi
 }
 
+gcheck() {
+    git checkout matthew/$1
+}
+
 new_br() {
   git checkout -b matthew/$1
 }
