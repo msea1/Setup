@@ -8,16 +8,17 @@ alias mkdir='mkdir -pv'
 alias wget='wget -c'
 
 # FOLDER SHORTCUTS
-alias backend="cd ~/Code/Crescendo/Backend"
+alias backend="cd ~/Code/Crescendo/crescendo-backend"
 alias cd..="cd .."
 alias code='cd ~/Code'
-alias frontend="cd ~/Code/Crescendo/Frontend"
+alias frontend="cd ~/Code/Crescendo/crescendo-frontend"
 alias tempd='cd ~/Temp'
 
 # NEW COMMANDS
 alias autofix='./scripts/lint/autofix'
-alias covtest='poetry run pytest -v --cov --cov-branch --cov-report term-missing:skip-covered --durations=0 --durations-min=0.25'
+alias covtest='poetry run pytest -v --cov --cov-branch --cov-report term-missing:skip-covered --durations=10 --durations-min=0.25'
 alias ipy='ipython --profile-dir .ipython'
+alias json_pretty='pretty_json'
 alias lint_check='./scripts/lint/check'
 alias ld='ls -ABF --color=auto'
 alias ll='ls -AhlF --color=auto'

@@ -13,6 +13,27 @@ author_by_file() {
   unset IFS
 }
 
+branch_cov() {
+  FILES=$(git diff --name-only main...HEAD -- '*.py' | paste -sd "," -)
+  if [ -z "$FILES" ]; then
+    echo "No Python files changed."
+  else
+    pytest --cov=$FILES --cov-report=xml
+    diff-cover coverage.xml --compare-branch=main
+  fi
+}
+
+chromy() {
+  TEMP="$(mktemp -d -- "/tmp/chromium-XXXXXX")"
+  echo "Running chrome with user-data-dir=$TEMP"
+  trap "rm -rf -- '$TEMP'" INT TERM EXIT
+  /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir="$TEMP" \
+		   --no-default-browser-check \
+		   --no-first-run \
+		   --incognito \
+		   "$@" >/dev/null 2>&1
+}
+
 del_br() {
   local d=$(git rev-parse --abbrev-ref HEAD)
   g co main
@@ -34,7 +55,7 @@ del_rm_br() {
   fi
 }
 
-extract () {
+extract() {
  if [ -f $1 ] ; then
    case $1 in
      *.tar.bz2)   tar xvjf $1    ;;
@@ -160,15 +181,16 @@ upd_main() {
   git reset --hard
   git rebase
   git submodule update
-  if [ ${PWD##*/} = "Backend" ];
+  if [ ${PWD##*/} = "crescendo-backend" ];
     then
       work
       poetry install
 	# ./scripts/migrate/local
   fi
-  if [ ${PWD##*/} = "Frontend" ];
+  if [ ${PWD##*/} = "crescendo-frontend" ];
     then
       npm install
+      git reset --hard
   fi
   git checkout $d
 }

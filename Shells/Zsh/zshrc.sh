@@ -76,6 +76,6 @@ fi
 
 
 # Fuzzy Search
-plugins=(git fzf)
+plugins=(git fzf zsh-autosuggestion zsh-syntax-highlighting)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
